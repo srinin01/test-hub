@@ -4,6 +4,9 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    defaults:
+        run:
+            working-directory: ./scripts
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,3 +20,5 @@ jobs:
       - run: python my_script.py
         env:
             USER_NAME: SriniNalluri
+      - name: Run another script
+        run: ./my-other-script.sh
